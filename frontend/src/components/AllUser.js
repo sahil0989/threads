@@ -39,9 +39,9 @@ function AllUser() {
                     id="container"
                     className="fixed inset-0 bg-black z-30 bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
                 >
-                    <div class="relative flex flex-col h-[80vh] overflow-scroll text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
+                    <div class="relative flex flex-col h-[80vh] overflow-y-scroll text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
                         <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700">
-
+                            <button onClick={() => setShowToast(!showToast)} className='absolute right-5 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg'>Close</button>
                             <h2 className='pl-5 text-2xl font-bold mb-5'>Our Users</h2>
 
                             {

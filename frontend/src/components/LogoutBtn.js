@@ -30,8 +30,11 @@ function LogoutBtn() {
     return (
         <>
             <Toaster richColors position="top-right" />
-            <button onClick={handleLogout} className='fixed z-10 top-8 right-12 bg-[#353535] px-3 py-2 rounded-lg hover:bg-[#252525] font-semibold'>
+            <button onClick={handleLogout} className='fixed z-10 top-16 right-8 bg-[#353535] px-3 py-2 rounded-lg hover:bg-[#252525] font-semibold'>
+                <div className='flex items-center gap-3'>
                 <FiLogOut />
+                <div className='hidden md:block'>Logout</div>
+                </div>
             </button>
         </>
     )

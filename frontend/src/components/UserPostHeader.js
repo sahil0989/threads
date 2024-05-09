@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 function UserPostHeader({ userData, currentUser, handleFollowUnfollow, following }) {
 
-    const [replies, setReplies] = useState(false)
+    // const [replies, setReplies] = useState(false)
     const [isCopyLinkVisible, setIsCopyLinkVisible] = useState(false);
 
     const toggleCopyLink = () => {
@@ -28,11 +28,11 @@ function UserPostHeader({ userData, currentUser, handleFollowUnfollow, following
             <div className='flex justify-between'>
                 <div className='flex flex-col'>
                     <h2 className='font-semibold text-2xl'>{userData?.name}</h2>
-                    <h6 className='text-sm'>{userData?.username || "markzuckerber"}</h6>
+                    <h6 className='text-sm'>{userData?.username || "User"}</h6>
                 </div>
                 <img src={userData?.profilePic || userPic} className='w-28 h-28 object-cover rounded-full border-2 border-white' alt='avatar' />
             </div>
-            <div className='my-2'>{userData?.bio || "Co-founder, executive chairman, and CEO of Meta platforms."}</div>
+            <div className='my-2'>{userData?.bio || "--"}</div>
             <div className='flex justify-between mb-5 items-center'>
                 <div className='flex flex-col gap-3'>
                     <h4 className='text-white/55'>{userData?.followers.length} followers</h4>
@@ -61,8 +61,8 @@ function UserPostHeader({ userData, currentUser, handleFollowUnfollow, following
             </div>
 
             <div className='flex border-b w-full border-white/15'>
-                <h2 onClick={() => setReplies(!replies)} className={`w-full flex justify-center cursor-pointer pb-4 ${replies ? "" : "border-b-2"}`}>Threads</h2>
-                <h2 onClick={() => setReplies(!replies)} className={`w-full flex justify-center cursor-pointer pb-4 ${replies ? "border-b-2" : ""}`}>Replies</h2>
+                {/* <h2 onClick={() => setReplies(!replies)} className={`w-full flex justify-center cursor-pointer pb-4 ${replies ? "" : "border-b-2"}`}>Threads</h2>
+                <h2 onClick={() => setReplies(!replies)} className={`w-full flex justify-center cursor-pointer pb-4 ${replies ? "border-b-2" : ""}`}>Replies</h2> */}
             </div>
         </>
     )

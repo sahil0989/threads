@@ -73,11 +73,18 @@ function UserProfile() {
             <LogoutBtn />
             <UserPostHeader currentUser={currentUser} userData={userData} handleFollowUnfollow={handleFollowUnfollow} following={following} />
             {
-                posts.length === 0 ? <div>No Post available</div> : (
-                    posts.map((post) => {
-                        return <Post key={post._id} post={post} postedby={post.postedby} currentUser={currentUser} />
-                    })
+                currentUser?._id === userData?._id && (
+                    posts.length === 0 ? <div>No Post available</div> : (
+                        posts.map((post) => {
+                            return <Post key={post._id} post={post} postedby={post.postedby} currentUser={currentUser} />
+                        })
+                    )
                 )
+            }
+            {
+                // currentUser?._id !== userData?._id && (
+                    /* Other User Post  */    
+                // )
             }
 
         </div>
