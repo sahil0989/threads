@@ -16,14 +16,15 @@ function UserProfile() {
 
     useEffect(() => {
         getUser();
-        getUserPost();
         // eslint-disable-next-line
-    }, [])
+    }, [username])
 
-    const getUserPost = async () => {
+    const getUserPost = async (user) => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/post/user/${currentUser?.username}`)
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/post/user/${user || currentUser?.username}`)
             const data = await response.json();
+            console.log("Data: ", data);
+            if (data.error) return toast.error(data.error, { duration: 2000 })
             setPosts(data);
         } catch (err) {
             return toast.error(err.message, { duration: 2000 });
@@ -42,6 +43,7 @@ function UserProfile() {
             const data = await response.json();
             setUserData(data.user);
             setFollowing(data.user.followers.includes(currentUser?._id));
+            getUserPost(data.user.username);
         } catch (err) {
             return toast.error(err.message, { duration: 2000 });
         }
@@ -82,9 +84,13 @@ function UserProfile() {
                 )
             }
             {
-                // currentUser?._id !== userData?._id && (
-                    /* Other User Post  */    
-                // )
+                currentUser?._id !== userData?._id && (
+                    posts.length === 0 ? <div>No Post available</div> : (
+                        posts.map((post) => {
+                            return <Post key={post._id} post={post} postedby={post.postedby} currentUser={currentUser} />
+                        })
+                    )
+                )
             }
 
         </div>

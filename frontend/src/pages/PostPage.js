@@ -127,7 +127,7 @@ function PostPage() {
           <div>No Replies</div>
         ) : (
           postData?.replies.map((reply) => {
-            return <Comments comment={reply.text} createdAt="1d" userName={reply.username} userAvatar={reply.userProfilePic} />
+            return <Comments key={reply?._id} comment={reply.text} createdAt="1d" userName={reply.username} userAvatar={reply.userProfilePic} />
           })
         )
       }
